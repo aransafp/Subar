@@ -7,8 +7,20 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="menu_favorite">Favorite</string>
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_detail">Detail</string>
     <string name="title_favorite">Favorite</string>
+    <string name="title_favorit">Favorite</string>
+
+    <string name="label_top_story">Top stories for you</string>
+    <string name="sample_title">Cara menjadi android developer yang ahli</string>
+    <string name="sample_author">Author</string>
+    <string name="sample_tgl">2021–07-25</string>
+
+    <string name="api_key">70ceff7d354e40eeb797294b11e56450</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

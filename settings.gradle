@@ -1,4 +1,4 @@
 rootProject.name = "Subar"
 include ':app'
 include ':core'
-include ':favorite'
+include ':favorit'
