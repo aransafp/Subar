@@ -11,10 +11,6 @@ import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val apiService: ApiService) {
 
-    companion object {
-        private val TAG = RemoteDataSource::class.simpleName
-    }
-
     suspend fun getAllArticle(): Flow<ApiResponse<List<ArticleResponse>>> {
 
         return flow {

@@ -1,6 +1,5 @@
 package com.aransafp.core.data
 
-import android.util.Log
 import com.aransafp.core.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.flow.*
 

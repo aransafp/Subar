@@ -3,7 +3,6 @@ package com.aransafp.core.data.source.remote.network
 import com.aransafp.core.data.source.remote.response.ListArticleResponse
 import com.aransafp.core.utils.Const
 import retrofit2.http.GET
-import retrofit2.http.Path
 
 interface ApiService {
 
