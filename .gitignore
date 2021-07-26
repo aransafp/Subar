@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+/core/src/main/java/com/aransafp/core/utils/Const.kt
