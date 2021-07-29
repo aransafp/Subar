@@ -31,6 +31,10 @@ android {
         }
     }
 
+    aaptOptions {
+        cruncherEnabled false
+    }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
