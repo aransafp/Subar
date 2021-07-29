@@ -1,5 +1,6 @@
 package com.aransafp.subar.favorit.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ class FavoriteActivity : AppCompatActivity() {
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private lateinit var binding: ActivityFavoriteBinding
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
