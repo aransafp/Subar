@@ -10,6 +10,8 @@ class LocalDataSource(private val subarDao: SubarDao) {
 
     fun getFavoriteArticle(): Flow<List<ArticleEntity>> = subarDao.getFavoriteArticle()
 
+    fun getArticle(articleId: Int): Flow<ArticleEntity> = subarDao.getArticle(articleId)
+
     suspend fun insertArticle(listArticle: List<ArticleEntity>) =
         subarDao.insertArticle(listArticle)
 

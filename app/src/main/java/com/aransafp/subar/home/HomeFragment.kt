@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aransafp.core.data.Resource
-import com.aransafp.core.domain.model.Article
 import com.aransafp.subar.databinding.FragmentHomeBinding
 import com.aransafp.subar.detail.DetailActivity
 import com.aransafp.subar.ui.ArticleAdapter
@@ -62,10 +61,10 @@ class HomeFragment : Fragment() {
             }
 
             articleAdapter.setOnItemClickCallback(object : ArticleAdapter.OnItemClickListener {
-                override fun onItem(article: Article) {
+                override fun onItem(articleId: Int) {
 
                     val intent = Intent(requireActivity(), DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_ARTICLE, article)
+                    intent.putExtra(DetailActivity.EXTRA_ARTICLE_ID, articleId)
                     startActivity(intent)
 
                 }

@@ -42,9 +42,9 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         favoriteAdapter.setOnItemClickCallback(object : ArticleAdapter.OnItemClickListener {
-            override fun onItem(article: Article) {
+            override fun onItem(articleId: Int) {
                 val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.EXTRA_ARTICLE, article)
+                intent.putExtra(DetailActivity.EXTRA_ARTICLE_ID, articleId)
                 startActivity(intent)
             }
         })

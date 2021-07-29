@@ -6,7 +6,6 @@ import android.webkit.WebView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.aransafp.core.domain.model.Article
 import com.aransafp.subar.R
 import com.aransafp.subar.databinding.ActivityDetailBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -18,7 +17,7 @@ class DetailActivity : AppCompatActivity() {
 
     companion object {
 
-        const val EXTRA_ARTICLE = "extra_article"
+        const val EXTRA_ARTICLE_ID = "extra_article_id"
 
     }
 
@@ -27,31 +26,30 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val article = intent.getParcelableExtra<Article>(EXTRA_ARTICLE) as Article
+        val articleId = intent.getIntExtra(EXTRA_ARTICLE_ID, 0)
 
-        loadWebView(article)
+        detailViewModel.getArticle(articleId).observe(this, { article ->
+            loadWebView(article.url)
 
-        var statusFavorite = article.isFavorite
-        setStatusFavorite(statusFavorite)
-        binding.fab.setOnClickListener {
-
-            statusFavorite = !statusFavorite
-            detailViewModel.setFavoriteArticle(article, statusFavorite)
-
-            if (statusFavorite) showToast("add to favorite") else showToast("remove from favorite")
+            var statusFavorite = article.isFavorite
             setStatusFavorite(statusFavorite)
-        }
+            binding.fab.setOnClickListener {
+
+                statusFavorite = !statusFavorite
+                detailViewModel.setFavoriteArticle(article, statusFavorite)
+
+                if (statusFavorite) showToast("add to favorite") else showToast("remove from favorite")
+                setStatusFavorite(statusFavorite)
+            }
+        })
+
     }
 
-    private fun loadWebView(article: Article) {
-        val url = article.url as String
-
+    private fun loadWebView(articleUrl: String?) {
         with(binding.webview) {
-
             webViewClient = WebViewClient()
+            loadUrl(articleUrl as String)
         }
-        binding.webview.loadUrl(url)
-
     }
 
     inner class WebViewClient : android.webkit.WebViewClient() {

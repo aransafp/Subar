@@ -44,24 +44,24 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemsArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(artilce: Article) {
+        fun bind(article: Article) {
 
             with(binding) {
 
-                tvTitle.text = artilce.title
-                tvAuthor.text = artilce.author
-                tvDate.text = artilce.publishedAt
+                tvTitle.text = article.title
+                tvAuthor.text = article.author
+                tvDate.text = article.publishedAt
 
                 Glide.with(itemView)
-                    .load(artilce.urlToImage)
+                    .load(article.urlToImage)
                     .into(imgPoster)
 
-                itemView.setOnClickListener { onItemClickListener.onItem(artilce) }
+                itemView.setOnClickListener { onItemClickListener.onItem(article.id) }
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItem(article: Article)
+        fun onItem(articleId: Int)
     }
 }

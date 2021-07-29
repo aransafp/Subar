@@ -10,6 +10,7 @@ object DataMapper {
         val articleList = ArrayList<ArticleEntity>()
         input.map {
             val article = ArticleEntity(
+                id = 0,
                 title = it.title,
                 description = it.description,
                 author = it.description,
@@ -27,6 +28,7 @@ object DataMapper {
     fun mapEntitiesToDomain(input: List<ArticleEntity>): List<Article> =
         input.map {
             Article(
+                id = it.id,
                 title = it.title,
                 description = it.description,
                 author = it.description,
@@ -39,6 +41,7 @@ object DataMapper {
         }
 
     fun mapDomainToEntity(input: Article) = ArticleEntity(
+        id = input.id,
         title = input.title,
         description = input.description,
         author = input.description,
@@ -48,4 +51,17 @@ object DataMapper {
         url = input.url,
         isFavorite = input.isFavorite
     )
+
+    fun mapEntityToDomain(input: ArticleEntity) = Article(
+        id = input.id,
+        title = input.title,
+        description = input.description,
+        author = input.description,
+        content = input.content,
+        publishedAt = input.publishedAt,
+        urlToImage = input.urlToImage,
+        url = input.url,
+        isFavorite = input.isFavorite
+    )
+
 }

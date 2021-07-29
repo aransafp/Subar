@@ -43,6 +43,12 @@ class ArticleRepository(
         }
     }
 
+    override fun getArticle(articleId: Int): Flow<Article> {
+        return localDataSource.getArticle(articleId).map {
+            DataMapper.mapEntityToDomain(it)
+        }
+    }
+
     override fun setFavoriteArticle(article: Article, state: Boolean) {
         val articleEntity = DataMapper.mapDomainToEntity(article)
         appExecutors.diskIO().execute {

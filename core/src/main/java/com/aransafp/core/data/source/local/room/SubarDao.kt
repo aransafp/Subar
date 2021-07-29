@@ -13,6 +13,9 @@ interface SubarDao {
     @Query("SELECT * FROM article WHERE isFavorite = 1")
     fun getFavoriteArticle(): Flow<List<ArticleEntity>>
 
+    @Query("SELECT * FROM article WHERE id = :articleId")
+    fun getArticle(articleId: Int): Flow<ArticleEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertArticle(article: List<ArticleEntity>)
 

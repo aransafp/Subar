@@ -30,7 +30,7 @@ val databaseModule = module {
             androidContext(),
             SubarDatabase::class.java, "subar.db"
         ).fallbackToDestructiveMigration()
-            .openHelperFactory(factory)
+//            .openHelperFactory(factory)
             .build()
     }
 }

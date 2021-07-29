@@ -10,5 +10,7 @@ interface ArticleUseCase {
 
     fun getFavoriteArticle(): Flow<List<Article>>
 
+    fun getArticle(articleId: Int): Flow<Article>
+
     fun setFavoriteArticle(article: Article, state: Boolean)
 }

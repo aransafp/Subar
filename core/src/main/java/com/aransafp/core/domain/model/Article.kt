@@ -7,6 +7,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Article(
 
+    val id: Int,
+
     val publishedAt: String?,
 
     val author: String?,
