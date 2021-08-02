@@ -1,4 +1,4 @@
-package com.aransafp.subar.splash
+package com.aransafp.subar.ui.splash
 
 import android.content.Intent
 import android.os.Bundle

@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aransafp.core.domain.model.Article
-import com.aransafp.subar.detail.DetailActivity
+import com.aransafp.subar.ui.detail.DetailActivity
 import com.aransafp.subar.favorit.databinding.ActivityFavoriteBinding
 import com.aransafp.subar.favorit.di.favoriteModule
 import com.aransafp.subar.ui.ArticleAdapter

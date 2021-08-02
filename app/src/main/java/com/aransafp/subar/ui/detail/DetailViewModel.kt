@@ -1,4 +1,4 @@
-package com.aransafp.subar.detail
+package com.aransafp.subar.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

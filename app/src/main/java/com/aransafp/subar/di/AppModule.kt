@@ -2,8 +2,8 @@ package com.aransafp.subar.di
 
 import com.aransafp.core.domain.usecase.ArticleInteractor
 import com.aransafp.core.domain.usecase.ArticleUseCase
-import com.aransafp.subar.detail.DetailViewModel
-import com.aransafp.subar.home.HomeViewModel
+import com.aransafp.subar.ui.detail.DetailViewModel
+import com.aransafp.subar.ui.home.HomeViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
