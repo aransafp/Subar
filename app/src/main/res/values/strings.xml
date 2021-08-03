@@ -24,7 +24,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="key_notification">key_notification</string>
-    <string name="pref_notify_summary">Reminder every 6 A.M.</string>
+    <string name="pref_notify_summary">Reminder every 7 A.M.</string>
     <string name="pref_notify_title">Notification</string>
     <string name="label_settings">settings</string>
 
