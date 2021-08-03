@@ -17,6 +17,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
         if (listArticle != null) {
             this.listArticle.clear()
             this.listArticle.addAll(listArticle)
+            notifyDataSetChanged()
         }
 
     }
