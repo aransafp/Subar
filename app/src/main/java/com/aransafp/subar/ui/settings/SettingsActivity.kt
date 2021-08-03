@@ -1,11 +1,13 @@
 package com.aransafp.subar.ui.settings
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.aransafp.subar.R
+import com.aransafp.subar.notification.DailyReminder
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +30,18 @@ class SettingsActivity : AppCompatActivity() {
             val notificationPreference =
                 findPreference<SwitchPreference>(getString(R.string.key_notification))
 
-            notificationPreference?.setOnPreferenceChangeListener { preference, newValue ->
+            notificationPreference?.setOnPreferenceChangeListener { _, newValue ->
+                val dailyReminder = DailyReminder()
+                if (newValue == true) {
+                    //start alarm manager
+                    dailyReminder.setAlarm(context as Context)
+                    showToast("Notification on")
+                } else {
+                    //cancel alarm manager
+                    dailyReminder.cancelAlarm(context as Context)
+                    showToast("Notification off")
 
-                if (newValue == true) showToast("Notification on") else showToast("Notification off")
+                }
 
                 true
             }
