@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aransafp.core.domain.model.Article
 import com.aransafp.subar.databinding.ItemsArticleBinding
 import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
@@ -50,6 +51,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
             with(binding) {
 
                 tvTitle.text = article.title
+                tvDescription.text = article.description
                 tvAuthor.text = article.author
                 tvDate.text = article.publishedAt
 
