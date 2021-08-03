@@ -6,6 +6,7 @@ import android.webkit.WebView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.aransafp.core.domain.model.Article
 import com.aransafp.subar.R
 import com.aransafp.subar.databinding.ActivityDetailBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -14,6 +15,9 @@ class DetailActivity : AppCompatActivity() {
 
     private val detailViewModel: DetailViewModel by viewModel()
     private lateinit var binding: ActivityDetailBinding
+
+    private var statusFavorite: Boolean = false
+    private lateinit var articleData: Article
 
     companion object {
 
@@ -31,17 +35,20 @@ class DetailActivity : AppCompatActivity() {
         detailViewModel.getArticle(articleId).observe(this, { article ->
             loadWebView(article.url)
 
-            var statusFavorite = article.isFavorite
+            articleData = article
+
+            statusFavorite = article.isFavorite
             setStatusFavorite(statusFavorite)
-            binding.fab.setOnClickListener {
 
-                statusFavorite = !statusFavorite
-                detailViewModel.setFavoriteArticle(article, statusFavorite)
-
-                if (statusFavorite) showToast("add to favorite") else showToast("remove from favorite")
-                setStatusFavorite(statusFavorite)
-            }
         })
+
+        binding.fab.setOnClickListener {
+            statusFavorite = !statusFavorite
+            detailViewModel.setFavoriteArticle(articleData, statusFavorite)
+
+            if (statusFavorite) showToast("add to favorite") else showToast("remove from favorite")
+            setStatusFavorite(statusFavorite)
+        }
 
     }
 
