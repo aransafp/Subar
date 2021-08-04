@@ -18,14 +18,15 @@
     <string name="label_top_story">Top stories for you</string>
     <string name="sample_title">Cara menjadi android developer yang ahli</string>
     <string name="sample_author">Author</string>
-    <string name="sample_tgl">2021–07-25</string>
+    <string name="sample_tgl">2021–07–25</string>
 
     <string name="api_key">70ceff7d354e40eeb797294b11e56450</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="key_notification">key_notification</string>
     <string name="pref_notify_summary">Reminder every 7 A.M.</string>
     <string name="pref_notify_title">Notification</string>
-    <string name="label_settings">settings</string>
+
+    <string name="title_notification">"Daily remainder</string>
+    <string name="msg_notification">There are news today for you</string>
 
 </resources>

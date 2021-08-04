@@ -22,10 +22,19 @@ class FavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.title = "Favorite"
 
         loadKoinModules(favoriteModule)
 
         val favoriteAdapter = ArticleAdapter()
+        favoriteAdapter.setOnItemClickCallback(object : ArticleAdapter.OnItemClickListener {
+            override fun onItem(articleId: Int) {
+                val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_ARTICLE_ID, articleId)
+                startActivity(intent)
+            }
+        })
+
         favoriteViewModel.articles.observe(this, { articles ->
 
             favoriteAdapter.setArticles(articles)
@@ -39,14 +48,6 @@ class FavoriteActivity : AppCompatActivity() {
             adapter = favoriteAdapter
         }
 
-        favoriteAdapter.setOnItemClickCallback(object : ArticleAdapter.OnItemClickListener {
-            override fun onItem(articleId: Int) {
-                val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.EXTRA_ARTICLE_ID, articleId)
-                startActivity(intent)
-            }
-        })
-
-        supportActionBar?.title = "Favorite"
     }
+
 }

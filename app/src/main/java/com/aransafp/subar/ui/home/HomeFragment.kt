@@ -1,6 +1,5 @@
 package com.aransafp.subar.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,17 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aransafp.core.data.Resource
 import com.aransafp.subar.databinding.FragmentHomeBinding
-import com.aransafp.subar.ui.detail.DetailActivity
 import com.aransafp.subar.ui.ArticleAdapter
+import com.aransafp.subar.ui.detail.DetailActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModel()
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,13 +30,22 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
 
             val articleAdapter = ArticleAdapter()
+            articleAdapter.setOnItemClickCallback(object : ArticleAdapter.OnItemClickListener {
+                override fun onItem(articleId: Int) {
+
+                    val intent = Intent(requireActivity(), DetailActivity::class.java).apply {
+                        putExtra(DetailActivity.EXTRA_ARTICLE_ID, articleId)
+                    }
+                    startActivity(intent)
+
+                }
+            })
 
             homeViewModel.articles.observe(viewLifecycleOwner, { articles ->
                 if (articles != null) {
@@ -46,7 +54,6 @@ class HomeFragment : Fragment() {
                         is Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
                             articleAdapter.setArticles(articles.data)
-                            articleAdapter.notifyDataSetChanged()
                         }
                         is Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
@@ -60,15 +67,8 @@ class HomeFragment : Fragment() {
                 adapter = articleAdapter
             }
 
-            articleAdapter.setOnItemClickCallback(object : ArticleAdapter.OnItemClickListener {
-                override fun onItem(articleId: Int) {
-
-                    val intent = Intent(requireActivity(), DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_ARTICLE_ID, articleId)
-                    startActivity(intent)
-
-                }
-            })
         }
+
     }
+
 }

@@ -15,6 +15,14 @@ import java.util.*
 
 class DailyReminder : BroadcastReceiver() {
 
+    companion object {
+        const val ID_REPEATING_ALARM = 101
+        const val ID_NOTIFICATION = 1
+        const val CHANNEL_ID = "channel id"
+        const val CHANNEL_NAME = "channel name"
+        const val CHANNEL_DESC = "channel desc"
+    }
+
     override fun onReceive(context: Context, intent: Intent) {
 
         showNotification(context)
@@ -65,8 +73,8 @@ class DailyReminder : BroadcastReceiver() {
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_baseline_notifications_24)
-            .setContentTitle(notification_title)
-            .setContentText(notification_text)
+            .setContentTitle(context.getString(R.string.title_notification))
+            .setContentText(context.getString(R.string.msg_notification))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
@@ -86,17 +94,6 @@ class DailyReminder : BroadcastReceiver() {
 
         notificationManager.notify(ID_NOTIFICATION, builder.build())
 
-
     }
 
-    companion object {
-        const val ID_REPEATING_ALARM = 101
-        const val ID_NOTIFICATION = 1
-        const val CHANNEL_ID = "channel id"
-        const val CHANNEL_NAME = "channel name"
-        const val CHANNEL_DESC = "channel desc"
-
-        private const val notification_title = "Daily reminder"
-        private const val notification_text = "There are news today for you"
-    }
 }

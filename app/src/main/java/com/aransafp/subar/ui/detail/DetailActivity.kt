@@ -13,17 +13,14 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_ARTICLE_ID = "extra_article_id"
+    }
+
     private val detailViewModel: DetailViewModel by viewModel()
     private lateinit var binding: ActivityDetailBinding
-
-    private var statusFavorite: Boolean = false
     private lateinit var articleData: Article
-
-    companion object {
-
-        const val EXTRA_ARTICLE_ID = "extra_article_id"
-
-    }
+    private var statusFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +43,11 @@ class DetailActivity : AppCompatActivity() {
             statusFavorite = !statusFavorite
             detailViewModel.setFavoriteArticle(articleData, statusFavorite)
 
-            if (statusFavorite) showToast("add to favorite") else showToast("remove from favorite")
+            if (statusFavorite) {
+                showToast("add to favorite")
+            } else {
+                showToast("remove from favorite")
+            }
             setStatusFavorite(statusFavorite)
         }
 
@@ -59,17 +60,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    inner class WebViewClient : android.webkit.WebViewClient() {
-        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-            view.loadUrl(url)
-            return false
-        }
-
-        override fun onPageFinished(view: WebView, url: String) {
-            super.onPageFinished(view, url)
-            binding.progressBar.visibility = View.GONE
-        }
-    }
 
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (statusFavorite) {
@@ -92,4 +82,17 @@ class DetailActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
+    inner class WebViewClient : android.webkit.WebViewClient() {
+        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+            view.loadUrl(url)
+            return false
+        }
+
+        override fun onPageFinished(view: WebView, url: String) {
+            super.onPageFinished(view, url)
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
 }

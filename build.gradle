@@ -18,10 +18,10 @@ buildscript {
     ext.room_version = "2.3.0"
 
     ext.retrofit_version = "2.9.0"
-    ext.logging_interceptor_version = '4.9.0'
+    ext.logging_interceptor_version = '4.9.1'
 
     ext.kotlin_coroutines_version = "1.4.3"
-    ext.lifecycle_version = "2.2.0"
+    ext.lifecycle_version = "2.3.1"
 
     ext.koin_version = "2.1.6"
 
@@ -32,7 +32,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.2.1"
+        classpath 'com.android.tools.build:gradle:7.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
 
         // NOTE: Do not place your application dependencies here; they belong
