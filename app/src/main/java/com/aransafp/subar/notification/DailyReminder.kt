@@ -88,7 +88,6 @@ class DailyReminder : BroadcastReceiver() {
             ).apply {
                 description = CHANNEL_DESC
             }
-
             notificationManager.createNotificationChannel(channel)
         }
 

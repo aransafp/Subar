@@ -6,5 +6,4 @@ import com.aransafp.core.domain.usecase.ArticleUseCase
 
 class HomeViewModel(articleUseCase: ArticleUseCase) : ViewModel() {
     val articles = articleUseCase.getAllArticle().asLiveData()
-
 }
